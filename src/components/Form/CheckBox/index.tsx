@@ -14,6 +14,7 @@ const CheckBox = ({ name, label, onChange, checked }: CheckBoxProps) => {
         id={name}
         onChange={onChange}
         checked={checked}
+        className="size-4"
       />
     </>
   );

@@ -6,10 +6,12 @@ interface HeaderProps {
 
 const Header = ({ title, left, right }: HeaderProps) => {
   return (
-    <header>
-      <div className="flex justify-between items-center">
+    <header className="h-24 bg-orange-500 px-4 sticky top-0">
+      <div className="flex justify-between items-center h-full">
         {left}
-        <h1>{title}</h1>
+        <div className="flex-1 flex justify-center">
+          <h1>{title}</h1>
+        </div>
         {right}
       </div>
     </header>

@@ -1,13 +1,11 @@
-import ShoppingList from '@views/ShoppingList'
-import './App.css'
+import ShoppingList from "@views/ShoppingList";
 
 function App() {
-
   return (
     <>
-     <ShoppingList />
+      <ShoppingList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

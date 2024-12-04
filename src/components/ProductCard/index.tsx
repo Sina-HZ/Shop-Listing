@@ -3,7 +3,7 @@ import CheckBox from "@Components/Form/CheckBox";
 
 interface ProductCardProps {
   selected?: boolean;
-  id: string,
+  id: string;
   base64Image?: string;
   description?: string;
   price?: number;
@@ -14,13 +14,19 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({
   title,
   id,
-  selected = false
+  selected = false,
 }) => {
   return (
-    <div>
-      <img />
-      <h3>{title}</h3>
-      <CheckBox name={id} checked={selected} />
+    <div className="flex items-start  border border-gray-400 rounded p-2 min-w-[200px]">
+      <img
+        src="https://interview-assignment-shopping-list.vercel.app/fallback.png"
+        width={64}
+        height={64}
+      />
+      <div className="flex gap-2 items-start justify-between w-full ml-2">
+        <h3>{title}</h3>
+        <CheckBox name={id} checked={selected} />
+      </div>
     </div>
   );
 };
