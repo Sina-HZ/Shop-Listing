@@ -5,16 +5,16 @@ interface CheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
-const CheckBox = ({ name, label, onChange, checked }: CheckBoxProps) => {
+const CheckBox = ({ name, label, checked }: CheckBoxProps) => {
   return (
     <>
       {label && <label htmlFor={name}>{label}</label>}
       <input
         type="checkbox"
         id={name}
-        onChange={onChange}
         checked={checked}
         className="size-4"
+        readOnly
       />
     </>
   );

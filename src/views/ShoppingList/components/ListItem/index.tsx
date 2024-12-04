@@ -11,19 +11,28 @@ export interface ProductDetail {
 
 interface ListItemProps {
   data: ProductDetail[];
+  onClick: (id: string) => void;
+  selectedItems: Map<string, boolean>;
 }
 
-const ListItem: React.FC<ListItemProps> = ({ data }) => {
+const ListItem: React.FC<ListItemProps> = ({
+  data,
+  onClick,
+  selectedItems,
+}) => {
   return (
     <ul className="gap-2 flex items-stretch flex-nowrap  flex-col sm:flex-wrap sm:flex-row sm:items-start m-4 pb-28">
       {data.map((item) => (
-        <li key={item.id} className="list-none flex-1 sm:max-w-max">
-          <ProductCard id={item.id} title={item.title} />
-        </li>
-      ))}
-      {data.map((item) => (
-        <li key={item.id} className="list-none flex-1 sm:max-w-max">
-          <ProductCard id={item.id} title={item.title} />
+        <li
+          key={item.id}
+          className="list-none flex-1 sm:max-w-max"
+          onClick={() => onClick(item.id)}
+        >
+          <ProductCard
+            id={item.id}
+            title={item.title}
+            selected={selectedItems.has(item.id)}
+          />
         </li>
       ))}
     </ul>
