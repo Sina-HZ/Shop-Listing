@@ -7,4 +7,9 @@ export interface ProductCardProps {
   strikePrice?: number;
   title: string;
   image?: string;
+  wrapperClassName?: string;
+  imageClassName?: string;
+  contentWrapperClassName?: string;
+  titleClassName?: string;
+  checkBoxClassName?: string;
 }
