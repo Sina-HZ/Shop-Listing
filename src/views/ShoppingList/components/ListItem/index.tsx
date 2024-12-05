@@ -1,10 +1,5 @@
-import { ProductDetail } from "@/types/products";
 import ProductCard from "@Components/ProductCard";
-interface ListItemProps {
-  data: ProductDetail[];
-  onClick: (id: string) => void;
-  selectedItems: Map<string, boolean>;
-}
+import { ListItemProps } from "./types";
 
 const ListItem: React.FC<ListItemProps> = ({
   data,
@@ -23,6 +18,7 @@ const ListItem: React.FC<ListItemProps> = ({
             id={item.id}
             title={item.title}
             selected={selectedItems.has(item.id)}
+            image={item.base64Image}
           />
         </li>
       ))}

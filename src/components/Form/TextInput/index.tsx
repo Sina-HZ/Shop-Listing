@@ -1,9 +1,4 @@
-import { InputHTMLAttributes } from "react";
-
-interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: string;
-  label?: string;
-}
+import { TextInputProps } from "./types";
 
 const TextInput = ({
   name,

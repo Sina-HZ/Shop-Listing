@@ -2,10 +2,7 @@ import { ProductDetail } from "@/types/products";
 import Button from "@Components/Button";
 import TextInput from "@Components/Form/TextInput";
 import { useState } from "react";
-
-interface CreateItemProps {
-  onSubmit: (value: ProductDetail) => void;
-}
+import { CreateItemProps } from "./types";
 
 const CreateItem: React.FC<CreateItemProps> = ({ onSubmit }) => {
   const [productName, setProductName] = useState("");
@@ -17,7 +14,7 @@ const CreateItem: React.FC<CreateItemProps> = ({ onSubmit }) => {
 
   const submitNewProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!productName) return;
+    if (!productName) return; // the place for notify user to handle the exception.
     const newProduct: ProductDetail = {
       id: window.crypto.randomUUID(), // I assumed the component executes only on the client side therefor window object is valid all the time.
       title: productName,
