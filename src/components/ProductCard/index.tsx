@@ -1,5 +1,5 @@
 import CheckBox from "@Components/Form/CheckBox";
-// import { ProductDetail } from "@views/ShoppingList/components/ListItem";
+import { twMerge } from "tailwind-merge";
 
 interface ProductCardProps {
   selected?: boolean;
@@ -17,13 +17,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
   selected = false,
 }) => {
   return (
-    <div className="flex items-start  border border-gray-400 rounded p-2 min-w-[200px]">
+    <div
+      className={twMerge(
+        "flex min-w-[200px] items-start rounded border border-gray-400 p-2",
+        selected && "border-neutral-900",
+      )}
+    >
       <img
         src="https://interview-assignment-shopping-list.vercel.app/fallback.png"
         width={64}
         height={64}
       />
-      <div className="flex gap-2 items-start justify-between w-full ml-2">
+      <div className="ml-2 flex w-full items-start justify-between gap-2">
         <h3>{title}</h3>
         <CheckBox name={id} checked={selected} />
       </div>

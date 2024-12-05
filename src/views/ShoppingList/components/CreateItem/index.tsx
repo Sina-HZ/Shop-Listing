@@ -34,15 +34,16 @@ const CreateItem: React.FC<CreateItemProps> = ({ onSubmit }) => {
   return (
     <form
       onSubmit={submitNewProduct}
-      className="fixed bottom-0 w-full flex gap-2 flex-col px-4 py-2 items-center rounded-lg border border-gray-400 shadow-lg bg-white"
+      className="fixed bottom-0 flex w-full flex-col items-center gap-2 rounded-lg border border-gray-400 bg-white px-4 py-2 shadow-lg"
     >
       <TextInput
         name="itemName"
-        className="sm:max-w-[50%] w-full rounded h-8 px-2 border border-gray-300"
+        className="h-8 w-full rounded border border-gray-300 px-2 sm:max-w-[50%]"
         onChange={productNameHandler}
         value={productName}
+        placeholder="Enter new product name"
       />
-      <Button type="submit" className="sm:max-w-[50%] w-full bg-orange-500">
+      <Button type="submit" className="w-full bg-orange-500 sm:max-w-[50%]">
         Add to list
       </Button>
     </form>

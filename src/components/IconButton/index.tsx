@@ -1,13 +1,14 @@
 import { ButtonHTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode | undefined;
 }
 
-const IconButton = ({ children, className = "", onClick }: ButtonProps) => {
+const IconButton = ({ children, className, onClick }: ButtonProps) => {
   return (
     <button
-      className={`rounded-full bg-transparent p-2 ${className}`}
+      className={twMerge("rounded-full bg-transparent p-2", className)}
       onClick={onClick}
     >
       {children}

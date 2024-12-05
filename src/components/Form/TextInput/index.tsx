@@ -11,6 +11,7 @@ const TextInput = ({
   value,
   onChange,
   className,
+  placeholder,
 }: TextInputProps) => {
   return (
     <>
@@ -21,6 +22,7 @@ const TextInput = ({
         onChange={onChange}
         type="text"
         className={className}
+        placeholder={placeholder}
       />
     </>
   );

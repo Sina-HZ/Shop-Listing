@@ -21,11 +21,11 @@ const ListItem: React.FC<ListItemProps> = ({
   selectedItems,
 }) => {
   return (
-    <ul className="gap-2 flex items-stretch flex-nowrap  flex-col sm:flex-wrap sm:flex-row sm:items-start m-4 pb-28">
+    <ul className="m-4 flex flex-col flex-nowrap items-stretch gap-2 pb-28 sm:flex-row sm:flex-wrap sm:items-start">
       {data.map((item) => (
         <li
           key={item.id}
-          className="list-none flex-1 sm:max-w-max"
+          className="flex-1 list-none sm:max-w-max"
           onClick={() => onClick(item.id)}
         >
           <ProductCard
