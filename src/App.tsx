@@ -1,9 +1,9 @@
-import ShoppingList from "@views/ShoppingList";
+import AppRoutes from "./routes";
 
 function App() {
   return (
     <>
-      <ShoppingList />
+      <AppRoutes />
     </>
   );
 }
