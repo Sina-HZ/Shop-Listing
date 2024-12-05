@@ -1,14 +1,5 @@
+import { ProductDetail } from "@/types/products";
 import ProductCard from "@Components/ProductCard";
-
-export interface ProductDetail {
-  id: string;
-  base64Image: string;
-  description: string;
-  price: number;
-  strikePrice: number | null;
-  title: string;
-}
-
 interface ListItemProps {
   data: ProductDetail[];
   onClick: (id: string) => void;

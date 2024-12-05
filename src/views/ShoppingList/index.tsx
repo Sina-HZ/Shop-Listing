@@ -1,51 +1,26 @@
-// import Header from "@Components/Header"
-
-import Header from "@Components/Header";
-import CreateItem from "./components/CreateItem";
-import ListItem, { ProductDetail } from "./components/ListItem";
 import rawData from "@/raw-data";
-import IconButton from "@Components/IconButton";
 import { TrashIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import Header from "@Components/Header";
+import IconButton from "@Components/IconButton";
+import ListItem from "./components/ListItem";
+import CreateItem from "./components/CreateItem";
+import useProductService from "@/hooks/useProductService";
 
 const ShoppingList = () => {
-  const [products, setProducts] = useState(rawData.products);
-  const [selectedItems, setSelectedItems] = useState(new Map());
-
-  const selectItemHandler = (id: string) => {
-    const newSelectedItemsState = new Map(selectedItems);
-
-    if (newSelectedItemsState.has(id)) {
-      newSelectedItemsState.delete(id);
-    } else {
-      newSelectedItemsState.set(id, true);
-    }
-
-    setSelectedItems(newSelectedItemsState);
-  };
-
-  const deleteItemsHandler = () => {
-    if (selectedItems.size !== 0) {
-      const remainProducts: ProductDetail[] = [];
-      products.forEach((item) => {
-        if (!selectedItems.has(item.id)) {
-          remainProducts.push(item);
-        }
-      });
-      setProducts(remainProducts);
-    }
-  };
-
-  const submitNewProductHandler = (value: ProductDetail) => {
-    setProducts([...products, value]);
-  };
+  const {
+    deleteProductBulk,
+    selectProductItem,
+    submitNewProduct,
+    products,
+    selectedItems,
+  } = useProductService(rawData.products);
 
   return (
     <div>
       <Header
         title="Shopping List"
         right={
-          <IconButton onClick={deleteItemsHandler}>
+          <IconButton onClick={deleteProductBulk}>
             <TrashIcon className="size-6 text-gray-900" />
           </IconButton>
         }
@@ -53,11 +28,11 @@ const ShoppingList = () => {
       <div className="flex-1">
         <ListItem
           data={products}
-          onClick={selectItemHandler}
+          onClick={selectProductItem}
           selectedItems={selectedItems}
         />
       </div>
-      <CreateItem onSubmit={submitNewProductHandler} />
+      <CreateItem onSubmit={submitNewProduct} />
     </div>
   );
 };

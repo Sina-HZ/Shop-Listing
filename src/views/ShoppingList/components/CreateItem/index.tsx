@@ -1,7 +1,7 @@
+import { ProductDetail } from "@/types/products";
 import Button from "@Components/Button";
 import TextInput from "@Components/Form/TextInput";
 import { useState } from "react";
-import { ProductDetail } from "../ListItem";
 
 interface CreateItemProps {
   onSubmit: (value: ProductDetail) => void;
@@ -19,7 +19,7 @@ const CreateItem: React.FC<CreateItemProps> = ({ onSubmit }) => {
     e.preventDefault();
     if (!productName) return;
     const newProduct: ProductDetail = {
-      id: window.crypto.randomUUID(), // I assumed the component exec only on client so window object is valid dureing the app.
+      id: window.crypto.randomUUID(), // I assumed the component executes only on the client side therefor window object is valid all the time.
       title: productName,
       price: Math.random() * 100,
       strikePrice: Math.random() * 50,
