@@ -14,6 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   contentWrapperClassName,
   titleClassName,
   checkBoxClassName,
+  onClick,
 }) => {
   return (
     <div
@@ -22,6 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         selected && "border-neutral-900",
         wrapperClassName,
       )}
+      onClick={onClick}
     >
       <LazyLoadImage
         src={image || productPlaceholderImage}

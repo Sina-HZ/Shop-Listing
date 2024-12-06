@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 export interface ProductCardProps {
   selected?: boolean;
   id: string;
@@ -12,4 +14,5 @@ export interface ProductCardProps {
   contentWrapperClassName?: string;
   titleClassName?: string;
   checkBoxClassName?: string;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
