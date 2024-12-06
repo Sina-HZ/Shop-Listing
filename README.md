@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# Tapsifood Shop Listing Challenge
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -48,3 +48,103 @@ export default tseslint.config({
   },
 })
 ```
+
+## Demo
+
+if you want to try the app you can visit the **Demo Link:**
+
+[https://tapsi-shop-listing-challeng.netlify.app](https://tapsi-shop-listing-challeng.netlify.app/)
+
+## Folder Structure
+
+**components:** shared components should be placed here.\
+**hooks:** shared hooks that needed in entire components should be placed here.\
+**typee:** hold your all global types and interfaces.\
+**views:** seperated views off the app.
+
+routes should be defined in `routes.tsx` file. base on your approach load modules (lazy or eager) for each route.
+```
+src/
+├── assets/
+├── components/
+├── hooks/
+├── types/
+├── views/
+│   └── ShoppingList/
+├── App.tsx
+├── routes.tsx
+└── main.tsx
+```
+## Custommizing theme
+
+`tailwindcss` was used to implement styling therefor in order to custommizing them you can extend `tailwind.config.js`. The `theme` section of your `tailwind.config.js` file is where you define your project’s color palette, type scale, fonts, breakpoints, border radius values, and more detailes in [tailwindcss theme configs](https://tailwindcss.com/docs/theme)
+
+```js
+// tailwind.config.js
+
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+        // put your custom theme object
+    },
+  },
+  plugins: [
+      // put your custom plagins
+  ],
+};
+
+```
+also [tailwindMerge](https://www.npmjs.com/package/tailwind-merge) was used to merge `className` and conditional styling.
+## Deployment
+
+We assumed two cases for build scenarios that developers might need:
+
+**1- build and preview locally (ViteJS):** the case prepared for check everything you need on the production build on your machine. default `port` was setted on `8080` but you can modify it on `vite.config.ts` file:
+
+```js
+// vite.config.ts
+export default defineConfig({
+  // ... ,
+  preview: {
+    port: 8080,
+    strictPort: true,
+  },
+  server: {
+    port: 8080,
+    strictPort: true,
+    host: true,
+    origin: "http://0.0.0.0:8080",
+  },
+});
+```
+after that run following command and when procces complete successfully, open the url that shown on your terminal:
+
+```bash
+  $ yarn preview
+```
+
+**2- build for production (Docker):** `nginx` and `node` images was used in `Dockerfile` in order to create production image.
+
+```bash
+  $ docker build -t <image-name> .
+  $ docker run -p 3000:3000 <image-name>
+```
+
+default port is `3000` exposed by the container, but you can modify it in `Dockerfile` and `nginx.conf`.
+
+also you can extend server config by `nginx.conf` file:
+
+```
+server {
+    listen 3000;
+    server_name localhost;
+
+    location / {
+        root /var/www/html;
+        index index.html index.htm;
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
