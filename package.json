@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Sina-HZ.github.io/Shop-Listin",
+  "homepage": "https://sina-hz.github.io/Shop-Listing",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
